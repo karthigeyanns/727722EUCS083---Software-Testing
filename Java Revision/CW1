@@ -1,0 +1,47 @@
+// You are using Java
+import java.util.*;
+class Cart
+{
+    ArrayList<Double> al=new ArrayList<>();
+    ArrayList<String> a=new ArrayList<>();
+    void addItem(String x,Double y)
+    {
+        a.add(x);
+        al.add(y);
+    }
+    void removeItem(String r)
+    {
+        int t=a.indexOf(r);
+        if(t!=-1){
+            al.remove(t);
+            a.remove(r);
+        }
+    }
+    void calculateTotalPrice()
+    {
+        Double sum=0.0;
+        for(Double x:al)
+        {
+            sum+=x;
+        }
+        System.out.println("Total Price after removing items: $"+sum);
+    }
+    public static void main(String[] args)
+    {
+        Scanner ob=new Scanner(System.in);
+        int n=ob.nextInt();
+        ob.nextLine();
+        Cart c=new Cart();
+        for(int i=0;i<n;i++)
+        {
+            c.addItem(ob.nextLine(),Double.parseDouble(ob.nextLine()));
+        }
+        int k=ob.nextInt();
+        ob.nextLine();
+        for(int i=0;i<k;i++)
+        {
+            c.removeItem(ob.nextLine());
+        }
+        c.calculateTotalPrice();
+    }
+}
