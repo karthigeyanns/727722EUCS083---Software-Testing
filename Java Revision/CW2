@@ -1,0 +1,32 @@
+// You are using Java
+import java.util.*;
+import java.lang.*;
+class InsufficientBalanceException extends Exception
+{
+    InsufficientBalanceException(String e)
+    {
+        super(e);
+    }
+    
+}
+class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner ob=new Scanner(System.in);
+        try
+        {
+            double a=ob.nextDouble();
+            double b=ob.nextDouble();
+            if(a<b)
+            {
+                throw new InsufficientBalanceException("Insufficient balance: Insufficient balance to perform the withdrawal.");
+            }
+            System.out.println("Transaction successful.");
+        }
+        catch(InsufficientBalanceException e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+}
