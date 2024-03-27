@@ -1,0 +1,17 @@
+// You are using Java
+import java.util.*;
+import java.sql.*;
+class Main
+{
+    public static void main(String[] args) throws Exception
+    {
+        Class.forName("com.mysql.jdbc.Driver");
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost/ri_db","test","test123");
+        Statement st=con.createStatement();
+        ResultSet rs=st.executeQuery("Select LOWER(Department_Name) from department");
+        while(rs.next())
+        {
+            System.out.println(rs.getString("LOWER(Department_Name)"));
+        }
+    }
+}
